@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yusuf Amod Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single readable column (max 1040px) — a tenant-console style header strip, then evidence-first sections that alternate prose and data. */
+:root{
+  --bg:#F4F6F7; --surface:#FFFFFF; --ink:#13232A; --muted:#55666D; --line:#D9E0E3;
+  --accent:#0B6F6A; --accent-soft:#E2F1EF; --bar:#9FB4BA;
+  --display:"Sora","Segoe UI",system-ui,sans-serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E171B; --surface:#152228; --ink:#E6EEF0; --muted:#9AAEB4; --line:#24363D;
+  --accent:#4CC4B9; --accent-soft:#16342F; --bar:#4A6068; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E171B; --surface:#152228; --ink:#E6EEF0; --muted:#9AAEB4; --line:#24363D;
+  --accent:#4CC4B9; --accent-soft:#16342F; --bar:#4A6068; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.2}
+h2{font-size:1.55rem;font-weight:600}
+h3{font-size:1.1rem;font-weight:600}
+p{margin:0}
+a{color:var(--accent)}
+.label{font:500 .72rem/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+section{padding-block:56px;border-top:1px solid var(--line)}
+.lede{max-width:62ch;color:var(--muted)}
+
+/* header */
+header{padding-block:40px 48px}
+.console{display:flex;flex-wrap:wrap;gap:8px 20px;font:400 .8rem var(--mono);color:var(--muted);padding-block:10px;border-bottom:1px solid var(--line);margin-bottom:40px}
+.console b{color:var(--accent);font-weight:500}
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:end}
+.hero>*{min-width:0}
+h1{font-size:clamp(2.2rem,5vw,3.3rem);font-weight:700;letter-spacing:-.02em}
+.role{font:600 1.05rem var(--display);color:var(--accent);margin-top:8px}
+.thesis{font-size:1.2rem;margin-top:20px;max-width:46ch}
+.contact{display:grid;gap:10px;padding:20px;background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.contact .row{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.contact .val{font-family:var(--mono);font-size:.88rem;word-break:break-all}
+button{font:500 .8rem var(--mono);color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:4px;padding:4px 10px;cursor:pointer}
+button:hover{background:var(--accent-soft)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:28px}
+.stat{background:var(--surface);padding:18px 16px;display:grid;gap:4px;align-content:start}
+.stat .n{font:600 1.9rem/1 var(--display);font-variant-numeric:tabular-nums}
+.stat .d{font-size:.88rem;color:var(--muted);line-height:1.35}
+
+/* chart */
+.chartgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px}
+.chartgrid>figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px;min-width:0}
+figcaption{font-size:.9rem;color:var(--muted);margin-top:8px}
+svg text{fill:var(--muted);font-family:var(--mono);font-size:11px}
+svg .val{fill:var(--ink);font-weight:500;font-size:12px}
+.note{font-size:.85rem;color:var(--muted);margin-top:16px;max-width:75ch}
+
+/* cases */
+.cases{display:grid;gap:20px;margin-top:28px}
+.case{display:grid;grid-template-columns:220px 1fr;gap:28px;padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.case>*{min-width:0}
+.case .meta{display:grid;gap:10px;align-content:start}
+.case .result{font:600 1.35rem/1.2 var(--display);color:var(--accent)}
+.case dl{margin:0;display:grid;gap:12px;min-width:0}
+.case dl>div,.case dd{min-width:0}
+.case dt{font:500 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.case dd{margin:2px 0 0}
+.case ul{margin:4px 0 0;padding-left:18px}
+.case li{margin-bottom:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font:400 .74rem var(--mono);padding:2px 8px;border-radius:3px;background:var(--accent-soft);color:var(--ink)}
+
+/* code */
+pre{margin:16px 0 0;padding:14px 16px;background:var(--bg);border:1px solid var(--line);border-radius:4px;overflow-x:auto;font:400 .8rem/1.55 var(--mono);color:var(--ink)}
+pre .c{color:var(--muted)}
+
+/* skills */
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:20px;font-size:.88rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.skillgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:20px}
+.group{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px;min-width:0}
+.group h3{margin-bottom:12px}
+.skill{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding-block:7px;border-top:1px solid var(--line);font-size:.95rem}
+.skill:first-of-type{border-top:0}
+.meter{display:flex;gap:3px}
+.meter i{width:14px;height:6px;border-radius:1px;background:var(--line)}
+.meter i.on{background:var(--accent)}
+.lvl{font:400 .72rem var(--mono);color:var(--muted);width:68px;text-align:right}
+.skill .right{display:flex;align-items:center;gap:8px}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+.svc{padding:20px;border:1px solid var(--line);border-radius:6px;background:var(--surface);display:grid;gap:10px;align-content:start;min-width:0}
+.svc .who{font-size:.88rem;color:var(--muted)}
+.svc .out{font:500 .8rem var(--mono);color:var(--accent);border-top:1px solid var(--line);padding-top:10px}
+
+/* certs */
+.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}
+.cert{display:grid;gap:4px;padding-left:14px;border-left:2px solid var(--accent)}
+.cert .y{font:400 .8rem var(--mono);color:var(--muted)}
+
+footer{padding-block:40px 56px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+
+@media (max-width:860px){
+  .hero,.chartgrid,.skillgrid{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:last-child{grid-column:1/-1}
+  .case{grid-template-columns:1fr;gap:16px}
+  .services,.certs{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){
+  .bar{transition:opacity .2s}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="console" aria-label="Environment summary">
+    <span>tenant: <b>2,000+ users · E3 + E5</b></span>
+    <span>identity: <b>hybrid AD + Entra ID</b></span>
+    <span>site: <b>400 users · factory + labs</b></span>
+    <span>location: <b>Boksburg, Gauteng</b></span>
+  </div>
+  <div class="hero">
+    <div>
+      <h1>Yusuf Amod</h1>
+      <p class="role">Microsoft 365 Operations &amp; Systems Engineer</p>
+      <p class="thesis">I run the Microsoft 365 environment for a 2,000-user pharmaceutical manufacturer. I keep it stable, move people off old file servers, and make sure every paid licence is actually being used.</p>
+    </div>
+    <div class="contact" aria-label="Contact details">
+      <span class="label">Contact</span>
+      <div class="row"><span class="val" id="email">yusufjoeamod@gmail.com</span><button type="button" id="copyEmail">Copy</button></div>
+      <div class="row"><span class="val">071 681 9061</span></div>
+      <div class="row"><span class="val">Johannesburg East Rand · remote or on-site</span></div>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><span class="n">2,845</span><span class="d">service requests resolved, Mar 2024 – Oct 2026</span></div>
+    <div class="stat"><span class="n">24 h</span><span class="d">median time to resolve in 2026, down from 64 h</span></div>
+    <div class="stat"><span class="n">51%</span><span class="d">of 2026 tickets closed within 24 hours</span></div>
+    <div class="stat"><span class="n">127</span><span class="d">departments served, 694 individual requesters</span></div>
+    <div class="stat"><span class="n">4</span><span class="d">file servers in the SharePoint Online migration I lead</span></div>
+  </div>
+</header>
+
+<main>
+<section class="wrap" aria-labelledby="perf">
+  <span class="label">Service record</span>
+  <h2 id="perf" style="margin-top:6px">More work, closed faster</h2>
+  <p class="lede" style="margin-top:10px">Every ticket below was assigned to me in the company service desk. Volume nearly doubled as the Microsoft 365 footprint grew, and the typical ticket now closes in a day instead of nearly three.</p>
+  <div class="chartgrid">
+    <figure>
+      <svg viewBox="0 0 420 220" width="100%" role="img" aria-label="Median resolution time: 2024 64 hours, 2025 32 hours, 2026 24 hours">
+        <line x1="40" y1="180" x2="400" y2="180" stroke="var(--line)"/>
+        <line x1="40" y1="100" x2="400" y2="100" stroke="var(--line)" stroke-dasharray="3 4"/>
+        <line x1="40" y1="20" x2="400" y2="20" stroke="var(--line)" stroke-dasharray="3 4"/>
+        <text x="34" y="184" text-anchor="end">0</text>
+        <text x="34" y="104" text-anchor="end">35h</text>
+        <text x="34" y="24" text-anchor="end">70h</text>
+        <!-- scale: 160px = 70h → 2.2857 px/h -->
+        <rect class="bar" x="70" y="33.7" width="70" height="146.3" fill="var(--bar)"/>
+        <rect class="bar" x="185" y="106.9" width="70" height="73.1" fill="var(--bar)"/>
+        <rect class="bar" x="300" y="125.1" width="70" height="54.9" fill="var(--accent)"/>
+        <text class="val" x="105" y="27" text-anchor="middle">64h</text>
+        <text class="val" x="220" y="100" text-anchor="middle">32h</text>
+        <text class="val" x="335" y="118" text-anchor="middle">24h</text>
+        <text x="105" y="200" text-anchor="middle">2024</text>
+        <text x="220" y="200" text-anchor="middle">2025</text>
+        <text x="335" y="200" text-anchor="middle">2026</text>
+      </svg>
+      <figcaption>Median hours from ticket created to resolved</figcaption>
+    </figure>
+    <figure>
+      <svg viewBox="0 0 420 220" width="100%" role="img" aria-label="Tickets per year: 620, 1,007, 1,218. Resolved within 24 hours: 33%, 43%, 51%">
+        <line x1="40" y1="180" x2="400" y2="180" stroke="var(--line)"/>
+        <line x1="40" y1="100" x2="400" y2="100" stroke="var(--line)" stroke-dasharray="3 4"/>
+        <line x1="40" y1="20" x2="400" y2="20" stroke="var(--line)" stroke-dasharray="3 4"/>
+        <text x="34" y="184" text-anchor="end">0</text>
+        <text x="34" y="104" text-anchor="end">700</text>
+        <text x="34" y="24" text-anchor="end">1,400</text>
+        <!-- scale: 160px = 1400 tickets → 0.11429 px/ticket -->
+        <rect class="bar" x="70" y="109.1" width="70" height="70.9" fill="var(--bar)"/>
+        <rect class="bar" x="185" y="64.9" width="70" height="115.1" fill="var(--bar)"/>
+        <rect class="bar" x="300" y="40.8" width="70" height="139.2" fill="var(--accent)"/>
+        <text class="val" x="105" y="102" text-anchor="middle">620</text>
+        <text class="val" x="220" y="58" text-anchor="middle">1,007</text>
+        <text class="val" x="335" y="34" text-anchor="middle">1,218</text>
+        <text x="105" y="200" text-anchor="middle">2024 · 33%</text>
+        <text x="220" y="200" text-anchor="middle">2025 · 43%</text>
+        <text x="335" y="200" text-anchor="middle">2026 · 51%</text>
+      </svg>
+      <figcaption>Tickets per year, with the share resolved within 24 hours</figcaption>
+    </figure>
+  </div>
+  <p class="note">Source: service desk export of tickets assigned to me. 2024 runs from March; 2026 runs to 28 October. Times are calendar hours, so nights and weekends count against the clock.</p>
+</section>
+
+<section class="wrap" aria-labelledby="work">
+  <span class="label">Selected work</span>
+  <h2 id="work" style="margin-top:6px">Projects and the results they produced</h2>
+  <div class="cases">
+
+    <article class="case">
+      <div class="meta">
+        <span class="label">Migration · 2026</span>
+        <h3>File servers to SharePoint Online</h3>
+        <span class="result">Wadeville site live on SharePoint, Sep 2026</span>
+        <div class="tags"><span class="tag">SharePoint Online</span><span class="tag">Information architecture</span><span class="tag">User training</span></div>
+      </div>
+      <dl>
+        <div><dt>Situation</dt><dd>Four on-premises file servers, years of unmanaged folders, and staff who depended on mapped drives every day.</dd></div>
+        <div><dt>What I did</dt><dd><ul>
+          <li>Planned the approach and confirmed root folder ownership with each business area.</li>
+          <li>Cleaned up and restructured the data before moving it, so old clutter stayed behind.</li>
+          <li>Trained users on finding and syncing their files, and handled 330+ SharePoint and OneDrive requests through the transition.</li>
+        </ul></dd></div>
+        <div><dt>Status</dt><dd>Wadeville complete. Two more sites in progress using the same playbook.</dd></div>
+      </dl>
+    </article>
+
+    <article class="case">
+      <div class="meta">
+        <span class="label">Governance · ongoing</span>
+        <h3>Licence governance and usage reporting</h3>
+        <span class="result">320+ licence requests run through one pipeline</span>
+        <div class="tags"><span class="tag">M365 E3/E5</span><span class="tag">Copilot</span><span class="tag">Power BI Pro</span><span class="tag">Graph PowerShell</span></div>
+      </div>
+      <dl>
+        <div><dt>Situation</dt><dd>Licence requests for Copilot, Power BI Pro, Dynamics 365 and Microsoft 365 grew 3.6× in two years, with no single view of who was using what.</dd></div>
+        <div><dt>What I did</dt><dd><ul>
+          <li>Built the request flow: intake, executive approval, reseller quotes co-termed to the agreement end date, procurement, then assignment through on-prem AD security groups.</li>
+          <li>Built a usage report that joins Graph usage data with AD group membership and flags each licence as keep, review or reclaim.</li>
+        </ul>
+<pre><span class="c"># flag paid licences with no recent use</span>
+$idle = ($today - $lastActivity).Days
+$action = if (-not $u.accountEnabled) { 'RECLAIM - account disabled' }
+          elseif ($idle -ge 60)        { "RECLAIM - no use $idle+ days" }
+          elseif ($idle -ge 30)        { "REVIEW - no use $idle days" }
+          else                          { 'KEEP' }</pre></dd></div>
+      </dl>
+    </article>
+
+    <article class="case">
+      <div class="meta">
+        <span class="label">Information protection · 2026</span>
+        <h3>Sensitivity labels for Power BI</h3>
+        <span class="result">Scoped label live for Power BI reports</span>
+        <div class="tags"><span class="tag">Microsoft Purview</span><span class="tag">Sensitivity labels</span><span class="tag">Power BI</span></div>
+      </div>
+      <dl>
+        <div><dt>Situation</dt><dd>Power BI reports carry business data that needs protecting, but a company-wide label change would affect every user and every document at once.</dd></div>
+        <div><dt>What I did</dt><dd><ul>
+          <li>Created a sensitivity label scoped to Power BI content only, so it never appears on email or Office files.</li>
+          <li>Published it through a label policy to the Power BI administrators security group only, keeping the rollout controlled and testable before wider release.</li>
+          <li>Maintain retention policies, including fixing duplicate-mailbox issues and managing OneDrive exclusions to recover storage.</li>
+        </ul></dd></div>
+      </dl>
+    </article>
+
+    <article class="case">
+      <div class="meta">
+        <span class="label">Network · 2026</span>
+        <h3>Factory site Wi-Fi and LAN upgrade</h3>
+        <span class="result">Site moved to Cisco Meraki, Jun 2026</span>
+        <div class="tags"><span class="tag">Cisco Meraki</span><span class="tag">Wireless</span><span class="tag">Vendor management</span></div>
+      </div>
+      <dl>
+        <div><dt>Situation</dt><dd>A manufacturing site with ageing switches and patchy wireless across the factory floor and admin block.</dd></div>
+        <div><dt>What I did</dt><dd><ul>
+          <li>Ran the switch implementation and access point rollout: labelling, enrolment and installation in the factory and admin areas.</li>
+          <li>Coordinated port configuration, UPS planning and cabling contractors, working around production and health-and-safety rules.</li>
+        </ul></dd></div>
+      </dl>
+    </article>
+
+    <article class="case">
+      <div class="meta">
+        <span class="label">Operations · 2023 – now</span>
+        <h3>Escalation point for Microsoft 365</h3>
+        <span class="result">Median resolution cut by 63%</span>
+        <div class="tags"><span class="tag">Exchange Online</span><span class="tag">Hybrid identity</span><span class="tag">Teams</span><span class="tag">ITIL 4</span></div>
+      </div>
+      <dl>
+        <div><dt>Situation</dt><dd>One escalation point for Microsoft issues across a GxP-regulated business, plus a 400-user site with factory and lab equipment.</dd></div>
+        <div><dt>What I did</dt><dd><ul>
+          <li>Resolved 440+ Exchange and mailbox requests and 330+ identity and access cases across hybrid AD and Entra ID.</li>
+          <li>Supervise two technicians, write their vendor and ticket-logging guides, and take the problems they can't solve.</li>
+          <li>Integrate third-party factory and lab systems with vendors and the security team, under change control.</li>
+        </ul></dd></div>
+      </dl>
+    </article>
+
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="skills">
+  <span class="label">Skills</span>
+  <h2 id="skills" style="margin-top:6px">What I can do, rated honestly</h2>
+  <div class="legend" aria-hidden="true">
+    <span><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>Expert: I own it day to day</span>
+    <span><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>Advanced</span>
+    <span><span class="meter"><i class="on"></i><i class="on"></i><i></i><i></i></span>Working knowledge</span>
+    <span><span class="meter"><i class="on"></i><i></i><i></i><i></i></span>Learning now</span>
+  </div>
+  <div class="skillgrid" id="skillgrid"></div>
+</section>
+
+<section class="wrap" aria-labelledby="svc">
+  <span class="label">Services</span>
+  <h2 id="svc" style="margin-top:6px">How I can help your business</h2>
+  <p class="lede" style="margin-top:10px">Fixed-scope engagements for small and mid-sized businesses on Microsoft 365, delivered remotely or on-site on the East Rand.</p>
+  <div class="services">
+    <div class="svc"><h3>Microsoft 365 health check</h3><p class="who">For businesses that set up Microsoft 365 once and never looked again.</p><p>I review licences, mailboxes, sharing, MFA, backups and storage, then hand you a prioritised fix list.</p><span class="out">You get: a written report and a licence saving estimate</span></div>
+    <div class="svc"><h3>File server to SharePoint</h3><p class="who">For teams still working off a shared drive or a server in the back office.</p><p>Planning, cleanup, migration and staff training, using the approach I run at enterprise scale.</p><span class="out">You get: files in SharePoint and staff who can find them</span></div>
+    <div class="svc"><h3>Licence clean-up</h3><p class="who">For organisations paying for seats nobody uses.</p><p>I match every paid licence to real usage and show you which ones to remove or reassign.</p><span class="out">You get: a keep / review / reclaim list</span></div>
+    <div class="svc"><h3>New tenant setup</h3><p class="who">For new or growing businesses moving to Microsoft 365.</p><p>Domains, mailboxes, Teams, SharePoint, security defaults and device sign-in set up properly from day one.</p><span class="out">You get: a documented, secure tenant</span></div>
+    <div class="svc"><h3>Copilot and Teams adoption</h3><p class="who">For businesses that bought Copilot or Teams and want staff to use it well.</p><p>Short practical training sessions built around your own documents and meetings.</p><span class="out">You get: trained staff and a one-page guide</span></div>
+    <div class="svc"><h3>Monthly support retainer</h3><p class="who">For small offices without an IT person.</p><p>Remote administration of users, licences and email, with a set number of hours each month.</p><span class="out">You get: one person who knows your setup</span></div>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="certs">
+  <span class="label">Credentials</span>
+  <h2 id="certs" style="margin-top:6px">Certifications and education</h2>
+  <div class="certs">
+    <div class="cert"><strong>ITIL® 4 Foundation</strong><span>IT Service Management · PeopleCert</span><span class="y">2026</span></div>
+    <div class="cert"><strong>Microsoft 365 Certified: Fundamentals</strong><span>MS-900 · Microsoft</span><span class="y">2026</span></div>
+    <div class="cert"><strong>Advanced Diploma in Information Systems</strong><span>UNISA · with distinction</span><span class="y">Completed</span></div>
+  </div>
+  <p class="note">In progress: Microsoft Graph PowerShell automation, then MS-102 (Microsoft 365 Administrator Expert).</p>
+</section>
+</main>
+
+<footer class="wrap">
+  <p>Yusuf Amod · Microsoft 365 Operations &amp; Systems Engineer · 10+ years in IT · Boksburg, Gauteng, South Africa</p>
+</footer>
+
+<script>
+const groups=[
+ ["Microsoft 365 administration",[["Microsoft 365 tenant administration (2,000+ users)",4],["Exchange Online and Outlook troubleshooting",4],["Licensing strategy and group-based assignment",4],["Teams and Teams Rooms administration",4],["SharePoint Online and OneDrive",4],["Retention policies and OneDrive storage",3]]],
+ ["Identity and infrastructure",[["Hybrid Active Directory and Entra ID",4],["Entra ID PIM, app registrations and consent",3],["Group Policy",3],["Domain controllers (testing and changes)",3],["Cisco Meraki LAN and Wi-Fi",3],["Microsoft Purview: sensitivity labels, label policies and retention",3]]],
+ ["Automation and data",[["PowerShell for administration",3],["Microsoft Graph PowerShell and reporting",1],["Power Automate workflows",2],["Power BI and Fabric licensing",3],["Lansweeper / CMDB classification",3]]],
+ ["Service and leadership",[["ITIL 4 service management",3],["Service desk (ManageEngine, Jira)",4],["Supervising and mentoring technicians",4],["Vendor and third-party system coordination",4],["Stakeholder advice on Microsoft 365 adoption",4],["GxP environments and change control (CAB)",3]]]
+];
+const names=["","Learning now","Working","Advanced","Expert"];
+const grid=document.getElementById("skillgrid");
+for(const [title,items] of groups){
+  const g=document.createElement("div");g.className="group";
+  const h=document.createElement("h3");h.textContent=title;g.appendChild(h);
+  for(const [s,l] of items){
+    const r=document.createElement("div");r.className="skill";
+    const n=document.createElement("span");n.textContent=s;
+    const right=document.createElement("span");right.className="right";
+    const m=document.createElement("span");m.className="meter";m.setAttribute("aria-hidden","true");
+    for(let i=1;i<=4;i++){const b=document.createElement("i");if(i<=l)b.className="on";m.appendChild(b)}
+    const t=document.createElement("span");t.className="lvl";t.textContent=names[l];
+    right.append(m,t);r.append(n,right);g.appendChild(r);
+  }
+  grid.appendChild(g);
+}
+document.getElementById("copyEmail").addEventListener("click",e=>{
+  const btn=e.currentTarget,txt=document.getElementById("email").textContent;
+  const done=()=>{btn.textContent="Copied";setTimeout(()=>btn.textContent="Copy",1500)};
+  try{navigator.clipboard.writeText(txt).then(done,()=>{selectEmail()})}catch(_){selectEmail()}
+  function selectEmail(){const r=document.createRange();r.selectNodeContents(document.getElementById("email"));const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="Selected"}
+});
+</script>
+</body>
+</html>
